@@ -8,7 +8,7 @@ Teste commit, plugin wordpress
 * v.0.1
 * http://cleitonsilva.eu1.alfasoft.pt/
 
-### How do I get set up? ###
+### Project status ###
 * Wordpress [x]
 * Create Crud from people  [x]
 * Create Crud from contact [x]
@@ -22,16 +22,4 @@ Teste commit, plugin wordpress
 * Connect api avatar, and save with people [ ]
 * sql relationships between tables [ ]
 * [bugfix] See error message on uninstall plugin [ ]
-
-
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+* [bugfix] APIREST code_country fix bugs found in api data [ ]
