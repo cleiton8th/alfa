@@ -269,11 +269,21 @@ function wpalfa_contacts_form_meta_box_handler($item)
 {
     ?>
 <tbody >
-		
+
+
 	<div class="formdatabc">		
 		
     <form >
 		<div class="form2bc">
+        <p>			
+		    <label for="pais"><?php _e('País:', 'wpalfa')?></label>
+            <div class="container country-container">
+                <select class="countries" name="countries" id="countries"></select>
+            </div>
+        </p>
+		<br>	
+            <input id="pais" name="pais" type="text" value="" required>
+		<br>
         <p>			
 		    <label for="country_code"><?php _e('country code:', 'wpalfa')?></label>
 		<br>	
@@ -292,5 +302,42 @@ function wpalfa_contacts_form_meta_box_handler($item)
 		</form>
 		</div>
 </tbody>
+<script>
+        const xhttp = new XMLHttpRequest();
+        const select = document.getElementById("countries");
+
+        let countries;
+
+        xhttp.onreadystatechange = function () {
+        console.log('this.status', this.status);
+        if (this.readyState == 4 && this.status == 200) {
+            countries = JSON.parse(xhttp.responseText);
+            assignValues();
+            handleCountryChange();
+        }
+        };
+        xhttp.open("GET", "https://restcountries.com/v3.1/all", true);
+        xhttp.send();
+
+        function assignValues() {
+        let sorted = countries.sort(function(a,b){
+            return  b.name.common > a.name.common;
+        })
+        sorted.forEach(country => {
+            const option = document.createElement("option");
+            option.value = (country.idd.root? country.idd.root.replace(/\+/,""): "") + country.idd.suffixes;
+            option.textContent = country.name.common + ' ('+ (country.idd.root? country.idd.root.replace(/\+/,""): "") + country.idd.suffixes + ')';
+            select.appendChild(option);
+        });
+        }
+
+        function handleCountryChange() {
+        const countryData = countries.find(
+        country => select.value === country.alpha2Code);
+        }
+
+        select.addEventListener("change", function(e){console.log(e.target.value)});
+
+</script>
 <?php
 }
