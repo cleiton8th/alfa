@@ -281,9 +281,10 @@ function wpalfa_contacts_form_meta_box_handler($item)
                 <select class="countries" name="countries" id="countries"></select>
             </div>
         </p>
-		<br>	
-            <input id="pais" name="pais" type="text" value="" required>
+
 		<br>
+        </div>
+        <div class="form2bc">
         <p>			
 		    <label for="country_code"><?php _e('country code:', 'wpalfa')?></label>
 		<br>	
